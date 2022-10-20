@@ -14,6 +14,7 @@
   --color-body-text: #c2c1c0;
   --color-button-text: #262624;
   --color-subtle: #61617a;
+  --border-radius: 0.5rem;
 }
 
 /* Box sizing rules */
@@ -92,6 +93,7 @@ h3 {
 button {
   display: flex;
   width: fit-content;
+  height: fit-content;
   gap: 0.5rem;
   background-color: var(--color-primary);
   border: none;
@@ -102,6 +104,7 @@ button {
   font-weight: 700 !important;
   text-transform: uppercase;
   letter-spacing: 3%;
+  justify-content: center;
 }
 
 .button-success {
@@ -184,4 +187,123 @@ select {
   flex-direction: column;
   width: fit-content;
   gap: 0.5rem;
+}
+
+/*---------------We made our card from here---------------*/
+
+body {
+  display: grid;
+  gap: 8px;
+  place-content: center;
+  padding-inline: 16px;
+}
+
+.card {
+  background-color: var(--color-card);
+  padding: 20px;
+  border-radius: var(--border-radius);
+  display: grid;
+  gap: 1rem;
+
+  grid-template-areas:
+    "image title date"
+    "image discription discription"
+    "image madewith demo";
+
+  grid-template-columns: minmax(auto, 480px) minmax(auto, 360px) min-content;
+  grid-auto-rows: auto;
+}
+
+.image {
+  grid-area: image;
+  border-radius: var(--border-radius);
+  height: 100%;
+  object-fit: cover;
+}
+
+.title {
+  grid-area: title;
+  align-self: start;
+}
+
+.date {
+  grid-area: date;
+  place-self: start end;
+}
+
+.discription {
+  grid-area: discription;
+}
+
+.madewith {
+  grid-area: madewith;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(3, min-content);
+  grid-auto-rows: auto;
+}
+
+.madewith-title {
+  grid-column: 1/4;
+  justify-self: center;
+}
+
+.madewith-content {
+  background-color: var(--color-input-field);
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  border-radius: 999px;
+}
+
+.demo-button {
+  grid-area: demo;
+  place-self: end;
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    grid-template-areas:
+      "image date"
+      "image title"
+      "image discription "
+      "image madewith"
+      "image demo";
+
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+  }
+  .title {
+    text-align: center;
+  }
+  .date {
+    justify-self: center;
+  }
+  .discription {
+    text-align: center;
+  }
+
+  .madewith-title {
+    display: none;
+  }
+
+  .demo-button {
+    justify-self: stretch;
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .card {
+    padding: 1rem;
+    grid-template-areas:
+      "image"
+      "title"
+      "date"
+      "discription"
+      "madewith"
+      "demo";
+
+    grid-template-columns: auto;
+    justify-items: center;
+  }
 }
