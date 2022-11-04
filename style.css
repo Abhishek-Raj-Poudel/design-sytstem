@@ -14,6 +14,7 @@
   --color-body-text: #c2c1c0;
   --color-button-text: #262624;
   --color-subtle: #61617a;
+
   --border-radius: 0.5rem;
 }
 
@@ -43,13 +44,13 @@ ul[role="list"],
 ol[role="list"] {
   list-style: none;
 }
-
 /* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
 }
 
 /* Set core body defaults */
+
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
@@ -96,8 +97,9 @@ button {
   height: fit-content;
   gap: 0.5rem;
   background-color: var(--color-primary);
+  color: var(--color-button-text);
   border: none;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   padding-block: 0.75rem;
   padding-inline: 2.5rem;
   font-size: 0.625rem !important;
@@ -189,121 +191,18 @@ select {
   gap: 0.5rem;
 }
 
-/*---------------We made our card from here---------------*/
-
-body {
-  display: grid;
-  gap: 8px;
-  place-content: center;
-  padding-inline: 16px;
+.bg-primary {
+  background-color: var(--color-primary);
 }
 
 .card {
   background-color: var(--color-card);
+  width: fit-content;
   padding: 20px;
   border-radius: var(--border-radius);
-  display: grid;
-  gap: 1rem;
-
-  grid-template-areas:
-    "image title date"
-    "image discription discription"
-    "image madewith demo";
-
-  grid-template-columns: minmax(auto, 480px) minmax(auto, 360px) min-content;
-  grid-auto-rows: auto;
+  box-shadow: rgba(240, 46, 170, 0.4) 0px 5px, rgba(240, 46, 170, 0.3) 0px 10px,
+    rgba(240, 46, 170, 0.2) 0px 15px, rgba(240, 46, 170, 0.1) 0px 20px,
+    rgba(240, 46, 170, 0.05) 0px 25px;
 }
 
-.image {
-  grid-area: image;
-  border-radius: var(--border-radius);
-  height: 100%;
-  object-fit: cover;
-}
-
-.title {
-  grid-area: title;
-  align-self: start;
-}
-
-.date {
-  grid-area: date;
-  place-self: start end;
-}
-
-.discription {
-  grid-area: discription;
-}
-
-.madewith {
-  grid-area: madewith;
-  display: grid;
-  gap: 8px;
-  grid-template-columns: repeat(3, min-content);
-  grid-auto-rows: auto;
-}
-
-.madewith-title {
-  grid-column: 1/4;
-  justify-self: center;
-}
-
-.madewith-content {
-  background-color: var(--color-input-field);
-  padding-inline: 1rem;
-  padding-block: 0.5rem;
-  border-radius: 999px;
-}
-
-.demo-button {
-  grid-area: demo;
-  place-self: end;
-}
-
-@media only screen and (max-width: 768px) {
-  .card {
-    grid-template-areas:
-      "image date"
-      "image title"
-      "image discription "
-      "image madewith"
-      "image demo";
-
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
-  }
-  .title {
-    text-align: center;
-  }
-  .date {
-    justify-self: center;
-  }
-  .discription {
-    text-align: center;
-  }
-
-  .madewith-title {
-    display: none;
-  }
-
-  .demo-button {
-    justify-self: stretch;
-    width: auto;
-  }
-}
-
-@media only screen and (max-width: 425px) {
-  .card {
-    padding: 1rem;
-    grid-template-areas:
-      "image"
-      "title"
-      "date"
-      "discription"
-      "madewith"
-      "demo";
-
-    grid-template-columns: auto;
-    justify-items: center;
-  }
-}
+/*---------------We made our card from here---------------*/
